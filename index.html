@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para Mamá ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', cursive;
+            background: linear-gradient(135deg, #ffcce6, #f9f9f9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Estilo del sobre cerrado */
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #f8d7da;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        .envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 100px solid #e9a3b0;
+            transform-origin: top;
+            transform: rotateX(0deg);
+            transition: all 0.5s ease 0.5s;
+        }
+
+        .envelope.open {
+            transform: translateY(-100px);
+        }
+
+        .envelope.open:before {
+            transform: rotateX(180deg);
+        }
+
+        /* Estilo de la carta */
+        .letter {
+            width: 280px;
+            height: 180px;
+            background: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: all 0.5s ease 1s;
+            overflow-y: auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter.show {
+            opacity: 1;
+            transform: translateY(-100px);
+        }
+
+        .letter-content {
+            font-size: 48px;
+            color: #d63384;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .hearts {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b6b;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Reproductor de YouTube oculto */
+        #youtube-player {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sobre -->
+    <div class="envelope" id="envelope">
+        <div class="letter" id="letter">
+            <div class="letter-content">TÓCAME</div>
+        </div>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div id="hearts-container"></div>
+
+    <!-- Reproductor de YouTube oculto -->
+    <iframe id="youtube-player" src="https://www.youtube.com/embed/77LmiX_YdbY?enablejsapi=1&autoplay=1" frameborder="0" allow="autoplay"></iframe>
+
+    <script>
+        // Animación del sobre y carta
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const heartsContainer = document.getElementById('hearts-container');
+
+        envelope.addEventListener('click', () => {
+            envelope.classList.add('open');
+            setTimeout(() => {
+                letter.classList.add('show');
+                createHearts();
+                // Iniciar música cuando se abre la carta
+                document.getElementById('youtube-player').src += "&autoplay=1";
+            }, 500);
+        });
+
+        // Crear corazones flotantes
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('hearts');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
