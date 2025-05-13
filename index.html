@@ -23,15 +23,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 90%;
+            max-width: 500px;
         }
 
         /* Texto "TÓCAME" sobre el sobre */
         .touch-text {
-            font-size: 32px;
+            font-size: 42px;
             color: #d63384;
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             animation: pulse 1.5s infinite;
             z-index: 20;
             transition: opacity 0.3s ease;
@@ -47,10 +49,11 @@
             100% { transform: scale(1); }
         }
 
-        /* Estilo del sobre cerrado */
+        /* Estilo del sobre cerrado - TAMAÑO AUMENTADO */
         .envelope {
-            width: 300px;
-            height: 200px;
+            width: 90%;
+            max-width: 400px;
+            height: 280px;
             background: #f8d7da;
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -64,30 +67,30 @@
             top: 0;
             width: 0;
             height: 0;
-            border-left: 150px solid transparent;
-            border-right: 150px solid transparent;
-            border-top: 100px solid #e9a3b0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-top: 140px solid #e9a3b0;
             transform-origin: top;
             transform: rotateX(0deg);
             transition: all 0.5s ease 0.5s;
         }
 
         .envelope.open {
-            transform: translateY(-100px);
+            transform: translateY(-150px);
         }
 
         .envelope.open:before {
             transform: rotateX(180deg);
         }
 
-        /* Estilo de la carta */
+        /* Estilo de la carta - TAMAÑO AUMENTADO */
         .letter {
-            width: 280px;
-            height: 180px;
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
             background: white;
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             opacity: 0;
@@ -101,18 +104,18 @@
 
         .letter.show {
             opacity: 1;
-            transform: translateY(-100px);
+            transform: translateY(-150px);
         }
 
         .letter-content {
-            font-size: 18px;
+            font-size: 22px;
             color: #333;
             line-height: 1.6;
         }
 
         .hearts {
             position: absolute;
-            font-size: 20px;
+            font-size: 28px;
             color: #ff6b6b;
             animation: float 3s ease-in-out infinite;
         }
@@ -128,6 +131,16 @@
             width: 0;
             height: 0;
             opacity: 0;
+        }
+
+        /* Responsive para pantallas muy pequeñas */
+        @media (max-width: 400px) {
+            .touch-text {
+                font-size: 36px;
+            }
+            .letter-content {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
