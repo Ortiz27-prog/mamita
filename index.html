@@ -52,8 +52,8 @@
         /* Estilo del sobre cerrado - TAMAÑO AUMENTADO */
         .envelope {
             width: 90%;
-            max-width: 450px; /* Ancho aumentado */
-            height: 320px; /* Altura aumentada */
+            max-width: 450px;
+            height: 380px; /* Altura aumentada para todo el texto */
             background: #f8d7da;
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -69,21 +69,21 @@
             height: 0;
             border-left: 225px solid transparent;
             border-right: 225px solid transparent;
-            border-top: 160px solid #e9a3b0;
+            border-top: 190px solid #e9a3b0;
             transform-origin: top;
             transform: rotateX(0deg);
             transition: all 0.5s ease 0.5s;
         }
 
         .envelope.open {
-            transform: translateY(-180px); /* Ajustado para nuevo tamaño */
+            transform: translateY(-220px);
         }
 
         .envelope.open:before {
             transform: rotateX(180deg);
         }
 
-        /* Estilo de la carta - TAMAÑO AJUSTADO SIN SCROLL */
+        /* Estilo de la carta - TAMAÑO AJUSTADO */
         .letter {
             width: calc(100% - 40px);
             height: calc(100% - 40px);
@@ -95,7 +95,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transition: all 0.5s ease 1s;
-            overflow: hidden; /* Cambiado de auto a hidden */
+            overflow: hidden;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -104,13 +104,19 @@
 
         .letter.show {
             opacity: 1;
-            transform: translateY(-180px); /* Ajustado para nuevo tamaño */
+            transform: translateY(-220px);
         }
 
         .letter-content {
             font-size: 20px;
             color: #333;
             line-height: 1.6;
+        }
+
+        .letter-content div:first-child {
+            font-weight: bold;
+            color: #d63384;
+            margin-bottom: 15px;
         }
 
         .hearts {
@@ -142,7 +148,7 @@
                 font-size: 18px;
             }
             .envelope {
-                height: 350px; /* Más alto en móviles pequeños */
+                height: 400px;
             }
         }
     </style>
@@ -156,13 +162,13 @@
         <div class="envelope" id="envelope">
             <div class="letter" id="letter">
                 <div class="letter-content">
-                    Para la mejor mamá del mundo 🌸,<br><br>
-                    Querida mamá, eres la persona más importante en mi vida.<br>
-                    Gracias por tu amor infinito y por siempre estar ahí.<br>
-                    Te amo con todo mi corazón ❤️<br><br>
-                    Feliz Día Mamita<br><br>
-                    Con todo mi cariño,<br>
-                    Tu hijo ❤️
+                    <div>PARA LA MEJOR MAMÁ DEL MUNDO 🌸</div>
+                    <div>Querida mamá, eres la persona más importante en mi vida.</div>
+                    <div>Gracias por tu amor infinito y por siempre estar ahí.</div>
+                    <div>Te amo con todo mi corazón 😊</div>
+                    <div>Feliz Día Mamita</div>
+                    <div>Con todo mi cariño,</div>
+                    <div>Tu hijo ❤️</div>
                 </div>
             </div>
         </div>
