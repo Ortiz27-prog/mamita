@@ -34,6 +34,11 @@
             margin-bottom: 20px;
             animation: pulse 1.5s infinite;
             z-index: 20;
+            transition: opacity 0.3s ease;
+        }
+
+        .touch-text.hide {
+            opacity: 0;
         }
 
         @keyframes pulse {
@@ -129,7 +134,7 @@
 <body>
     <div class="container" id="container">
         <!-- Texto "TÓCAME" sobre el sobre -->
-        <div class="touch-text">TÓCAME</div>
+        <div class="touch-text" id="touchText">TÓCAME</div>
         
         <!-- Sobre -->
         <div class="envelope" id="envelope">
@@ -153,6 +158,7 @@
     <script>
         // Elementos principales
         const container = document.getElementById('container');
+        const touchText = document.getElementById('touchText');
         const envelope = document.getElementById('envelope');
         const letter = document.getElementById('letter');
         const heartsContainer = document.getElementById('hearts-container');
@@ -163,12 +169,20 @@
             if (hasOpened) return;
             
             hasOpened = true;
+            
+            // Ocultar el texto "TÓCAME" inmediatamente
+            touchText.classList.add('hide');
+            
+            // Abrir el sobre
             envelope.classList.add('open');
+            
+            // Reproducir música inmediatamente
+            document.getElementById('youtube-player').src += "&autoplay=1";
+            
+            // Mostrar la carta después de la animación del sobre
             setTimeout(() => {
                 letter.classList.add('show');
                 createHearts();
-                // Iniciar música
-                document.getElementById('youtube-player').src += "&autoplay=1";
             }, 500);
         }
 
